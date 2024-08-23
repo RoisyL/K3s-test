@@ -90,6 +90,6 @@ jobs:
         echo pod状态:
         kubectl get pods
 
-        # 用脚本获取cluster-ip并尝试访问Service
-        chmod +x ./k3s/catch_clusterip2.sh
-        ./k3s/catch_clusterip2.sh
+        # 用脚本获取node-ip并尝试访问Service
+        chmod +x ./k3s/catch_nodeip.sh
+        ./k3s/catch_nodeip.sh
