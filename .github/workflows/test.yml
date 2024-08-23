@@ -25,14 +25,19 @@ jobs:
         # 检查服务状态
         kubectl get serviceaccount default -n default
         # 检查集群运行情况
-        sleep 7
-        echo “集群运行情况：”
+        sleep 5
+        echo 集群运行情况：
         kubectl get nodes
     - name: pod test
       run: |
         # 创建一个容器
         kubectl run first-container --image=docker.io/library/nginx --port=80
-        # 查看已创建容器状态
+        # 查看已创建pod状态
+        sleep 5
+        echo pod状态:
         kubectl get pods
+    - name: container test
+      run: |
         # 使用docker命令查看容器状态
+        sleep 5
         docker ps
