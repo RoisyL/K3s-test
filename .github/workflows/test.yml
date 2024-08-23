@@ -64,10 +64,25 @@ jobs:
         echo pod状态:
         kubectl get pods
     
-    - name: service test
+    # - name: service test-1
+    #   run: |
+    #     # 尝试在此前Deployment基础上建立Service
+    #     kubectl apply -f ./k3s/service.yaml
+    #     # 查看Service状态
+    #     sleep 20
+    #     echo service 状态：
+    #     kubectl get svc
+    #     echo pod状态:
+    #     kubectl get pods
+
+    #     # 用脚本获取cluster-ip并尝试访问Service
+    #     chmod +x ./k3s/catch_clusterip.sh
+    #     ./k3s/catch_clusterip.sh
+
+    - name: service test-2
       run: |
-        # 尝试在此前Deployment基础上建立Service
-        kubectl apply -f ./k3s/service.yaml
+        # 尝试在此前Deployment基础上建立NodePort类型Service
+        kubectl apply -f ./k3s/service2.yaml
         # 查看Service状态
         sleep 20
         echo service 状态：
@@ -76,5 +91,5 @@ jobs:
         kubectl get pods
 
         # 用脚本获取cluster-ip并尝试访问Service
-        chmod +x ./k3s/catch_clusterip.sh
-        ./k3s/catch_clusterip.sh
+        chmod +x ./k3s/catch_clusterip2.sh
+        ./k3s/catch_clusterip2.sh
