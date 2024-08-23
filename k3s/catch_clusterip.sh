@@ -4,7 +4,7 @@
 SERVICE_NAME="nginx-service"
 
 # 使用 kubectl 获取 Service 的 ClusterIP
-CLUSTER_IP=$(kubectl get svc "$SERVICE_NAME" -o jsonpath='{.spec.CLUSTER-IP}')
+CLUSTER_IP=$(kubectl get svc "$SERVICE_NAME" | grep "$SERVICE_NAME" | awk '{print $3}')
 
 # 检查 ClusterIP 是否已获取
 if [ -z "$CLUSTER_IP" ]; then
