@@ -12,4 +12,9 @@ else
 fi
 
 # 使用获取的 INGRESS_ADDRESS 访问 Service
-curl "$INGRESS_ADDRESS"
+echo 使用获取的 INGRESS_ADDRESS 访问 Service
+curl http://"$INGRESS_ADDRESS"
+
+# 使用服务名称和端口号来访问资源
+echo 使用服务名称和端口号来访问资源
+curl http://nginx:80
