@@ -18,34 +18,49 @@ jobs:
         cat /etc/rancher/k3s/k3s.yaml
         mkdir -p ~/.kube
         cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+
     - name: default account create
       run: |
         # 创建默认服务账号
         kubectl create serviceaccount default -n default
         # 检查服务状态
         kubectl get serviceaccount default -n default
+
     - name: node check
       run: |
         # 检查集群运行情况
         sleep 2
         echo 集群运行情况：
         kubectl get nodes
-    - name: pod test
+
+    # - name: pod test
+    #   run: |
+    #     # 创建一个包含nginx容器的pod
+    #     kubectl run first-container --image=docker.io/library/nginx --port=80
+    #     # 查看已创建pod状态
+    #     sleep 15
+    #     echo pod状态:
+    #     kubectl get pods
+
+    # - name: container test
+    #   run: |
+    #     sleep 5
+    #     # 查看 Pod 详情
+    #     # echo pod describe:
+    #     # kubectl describe pod first-container
+    #     echo first-container -o wide
+    #     kubectl get pods first-container -o wide
+
+    #     # 尝试访问Nginx Container
+    #     curl 10.42.0.3:80
+
+    - name: deployment test 
       run: |
-        # 创建一个容器
-        kubectl run first-container --image=docker.io/library/nginx --port=80
-        # 查看已创建pod状态
-        sleep 20
+        # 尝试创建3个副本的Deployment
+        kubectl apply -f k3s\deployment.yaml
+        # 查看Deployment状态
+        sleep 15
+        echo deployemt 状态：
+        kubectl get deployment
         echo pod状态:
         kubectl get pods
-    - name: container test
-      run: |
-        sleep 5
-        # 查看 Pod 详情
-        # echo pod describe:
-        # kubectl describe pod first-container
-        echo first-container -o wide
-        kubectl get pods first-container -o wide
-
-        # 尝试访问Nginx Container
-        curl 10.42.0.3:80
