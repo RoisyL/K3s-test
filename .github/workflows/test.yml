@@ -75,4 +75,4 @@ jobs:
         kubectl get pods
 
         # 尝试访问Service
-        curl 10.43.238.54:80
+        curl 10.43.41.51:80
