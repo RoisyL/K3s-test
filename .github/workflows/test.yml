@@ -52,16 +52,16 @@ jobs:
     #     # 尝试访问Nginx Container
     #     curl 10.42.0.3:80
 
-    # - name: deployment test 
-    #   run: |
-    #     # 尝试创建3个副本的Deployment
-    #     kubectl apply -f ./k3s/deployment.yaml
-    #     # 查看Deployment状态
-    #     sleep 15
-    #     echo deployemt 状态：
-    #     kubectl get deployment
-    #     echo pod状态:
-    #     kubectl get pods
+    - name: deployment test 
+      run: |
+        # 尝试创建3个副本的Deployment
+        kubectl apply -f ./k3s/deployment.yaml
+        # 查看Deployment状态
+        sleep 15
+        echo deployemt 状态：
+        kubectl get deployment
+        echo pod状态:
+        kubectl get pods
     
     - name: service test
       run: |
