@@ -20,11 +20,12 @@ jobs:
         cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
     - name: node check
       run: |
-        # 尝试创建账号
+        # 创建默认服务账号
         kubectl create serviceaccount default -n default
         # 检查服务状态
         kubectl get serviceaccount default -n default
         # 检查集群运行情况
+        sleep 7
         echo “集群运行情况：”
         kubectl get nodes
     - name: pod test
