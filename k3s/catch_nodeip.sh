@@ -4,7 +4,7 @@
 NODE_NAME=$(kubectl get nodes | grep master | awk '{print $1}')
 
 # 使用 kubectl 获取 Service 的 NODEIP
-NODE_IP=$(kubectl get nodes "$NODE_NAME" -o wide | grep "$NODE_NAME" | awk '{print $3}')
+NODE_IP=$(kubectl get nodes "$NODE_NAME" -o wide | grep "$NODE_NAME" | awk '{print $6}')
 
 # 检查 NODEIP 是否已获取
 if [ -z "$NODE_IP" ]; then
