@@ -18,8 +18,12 @@ jobs:
         cat /etc/rancher/k3s/k3s.yaml
         mkdir -p ~/.kube
         cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+    - name: node test
+      run: |
         # 检查集群运行情况
         kubectl get nodes
+    - name: pod test
+      run: |
         # 查看已创建容器
         kubectl get pods --all-namespaces
     - name: example tests
