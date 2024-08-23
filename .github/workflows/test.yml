@@ -18,12 +18,14 @@ jobs:
         cat /etc/rancher/k3s/k3s.yaml
         mkdir -p ~/.kube
         cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+    - name: default account create
+      run: |
+        # 创建默认服务账号
+        kubectl create serviceaccount default -n default
+        # 检查服务状态
+        kubectl get serviceaccount default -n default
     - name: node check
       run: |
-        # # 创建默认服务账号
-        # kubectl create serviceaccount default -n default
-        # # 检查服务状态
-        # kubectl get serviceaccount default -n default
         # 检查集群运行情况
         sleep 2
         echo 集群运行情况：
@@ -38,6 +40,9 @@ jobs:
         kubectl get pods
     - name: container test
       run: |
-        # 使用docker命令查看容器状态
         sleep 5
-        docker ps
+        # 查看 Pod 详情
+        echo pod describe:
+        kubectl describe pod first-container
+        echo first-container -o wide
+        kubectl get pods first-container -o wide
