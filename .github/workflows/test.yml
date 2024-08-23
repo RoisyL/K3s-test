@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+    # 检出仓库代码
     - uses: actions/checkout@v2
     - name: install k8s
       run: |
@@ -74,5 +75,6 @@ jobs:
         echo pod状态:
         kubectl get pods
 
-        # 尝试访问Service
-        curl 10.43.41.51:80
+        # 用脚本获取cluster-ip并尝试访问Service
+        chmod +x ./k3s/catch_clusterip.sh
+        ./k3s/catch_clusterip.sh
