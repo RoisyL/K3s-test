@@ -94,5 +94,3 @@ jobs:
         chmod +x ./k3s/catch_nodeip.sh
         ./k3s/catch_nodeip.sh
 
-        # sleep一会儿我试试浏览器能不能上
-        sleep 300
