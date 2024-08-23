@@ -35,14 +35,17 @@ jobs:
         # 创建一个容器
         kubectl run first-container --image=docker.io/library/nginx --port=80
         # 查看已创建pod状态
-        sleep 30
+        sleep 20
         echo pod状态:
         kubectl get pods
     - name: container test
       run: |
         sleep 5
         # 查看 Pod 详情
-        echo pod describe:
-        kubectl describe pod first-container
+        # echo pod describe:
+        # kubectl describe pod first-container
         echo first-container -o wide
         kubectl get pods first-container -o wide
+
+        # 尝试访问Nginx Container
+        curl 10.42.0.3:80
