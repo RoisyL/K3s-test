@@ -68,8 +68,11 @@ jobs:
         # 尝试在此前Deployment基础上建立Service
         kubectl apply -f ./k3s/service.yaml
         # 查看Service状态
-        sleep 15
+        sleep 25
         echo service 状态：
         kubectl get svc
         echo pod状态:
         kubectl get pods
+
+        # 尝试访问Service
+        curl 10.43.238.54:80
