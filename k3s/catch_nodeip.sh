@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 定义 NODE 名称
-NODE_NAME=$(kubectl get nodes | awk '{print $1}')
+NODE_NAME=$(kubectl get nodes | grep master | awk '{print $1}')
 
 # 使用 kubectl 获取 Service 的 NODEIP
 NODE_IP=$(kubectl get nodes "$NODE_NAME" -o wide | grep "$SERVICE_NAME" | awk '{print $3}')
