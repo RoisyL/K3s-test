@@ -12,5 +12,6 @@ else
 fi
 
 # 使用获取的 INGRESS_ADDRESS 访问 Service
+# 好像不太行，老老实实用集群ID访问吧
 echo 使用获取的 INGRESS_ADDRESS 访问 Service
 curl http://"$INGRESS_ADDRESS":80
