@@ -31,7 +31,7 @@ jobs:
         # 检查集群运行情况
         sleep 2
         echo 集群运行情况：
-        kubectl get nodes
+        kubectl get nodes 
 
     # - name: pod test
     #   run: |
@@ -75,10 +75,12 @@ jobs:
         kubectl get svc
         echo pod状态:
         kubectl get pods
+        echo node状态:
+        kubectl get nodes -o wide
 
-    #     # 用脚本获取cluster-ip并尝试访问Service
-    #     chmod +x ./k3s/catch_clusterip.sh
-    #     ./k3s/catch_clusterip.sh
+        # 用脚本获取cluster-ip并尝试访问Service
+        chmod +x ./k3s/catch_clusterip.sh
+        ./k3s/catch_clusterip.sh
 
     # - name: service test-2
     #   run: |
@@ -95,15 +97,15 @@ jobs:
     #     chmod +x ./k3s/catch_nodeip.sh
     #     ./k3s/catch_nodeip.sh
 
-    - name: ingress test
-      run: |
-        # 尝试创建 ingress
-        kubectl apply -f ./k3s/ingress.yaml
-        # 查看ingress状态
-        echo ingress状态:
-        kubectl get ingress
+    # - name: ingress test
+    #   run: |
+    #     # 尝试创建 ingress
+    #     kubectl apply -f ./k3s/ingress.yaml
+    #     # 查看ingress状态
+    #     echo ingress状态:
+    #     kubectl get ingress
 
-        # 用脚本获取ingress-address并尝试访问Service
-        chmod +x ./k3s/catch_ingressaddress.sh
-        ./k3s/catch_ingressaddress.sh
+    #     # 用脚本获取ingress-address并尝试访问Service
+    #     chmod +x ./k3s/catch_ingressaddress.sh
+    #     ./k3s/catch_ingressaddress.sh
 
